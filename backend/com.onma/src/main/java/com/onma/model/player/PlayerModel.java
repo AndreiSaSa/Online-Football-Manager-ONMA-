@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -33,11 +34,12 @@ public class PlayerModel extends AbstractModel {
     @Column(nullable = false)
     private Long wage;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private PlayerAttributesModel playerAttributes;
 
     @Column(nullable = false)
-    private Boolean transferLister;
+    private Boolean transferListed;
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
@@ -53,5 +55,8 @@ public class PlayerModel extends AbstractModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @NotNull
     private TeamModel team;
+
+    @Column(nullable = false)
+    private Long tacticPosition;
 
 }

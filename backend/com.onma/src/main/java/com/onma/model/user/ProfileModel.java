@@ -38,8 +38,4 @@ public class ProfileModel extends AbstractModel {
 
     @Column(nullable = false)
     private Long points;
-
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "profile")
-    @NotNull
-    private UserModel user;
 }

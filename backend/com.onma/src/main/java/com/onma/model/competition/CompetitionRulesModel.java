@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,22 +22,8 @@ import java.time.LocalDateTime;
 public class CompetitionRulesModel extends AbstractModel {
 
     @Column(nullable = false)
-    @NotBlank
-    private LocalDateTime startTime;
-
-    @Column(nullable = false)
-    @NotBlank
-    private LocalDateTime endTime;
-
-    @Column(nullable = false)
-    @NotBlank
-    private LocalDateTime nextMatchTime;
-
-    @Column(nullable = false)
-    @NotBlank
     private Long numberOfTeams;
 
     @Column(nullable = false)
-    @NotBlank
     private Long numberOfGames;
 }

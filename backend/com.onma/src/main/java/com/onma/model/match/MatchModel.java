@@ -30,10 +30,13 @@ public class MatchModel extends AbstractModel {
     private CompetitionModel competition;
 
     @Column(nullable = false)
-    @NotBlank
-    private LocalDateTime date;
+    private Long matchDay;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private MatchDataModel matchData;
+
+    @Column(nullable = false)
+    private Boolean played;
 
 }

@@ -24,11 +24,9 @@ public class TeamInformationModel extends AbstractModel {
     private String name;
 
     @Column(nullable = false)
-    @NotBlank
     private Long transferBudget;
 
     @Column(nullable = false)
-    @NotBlank
     private Long wageBudget;
 
 }

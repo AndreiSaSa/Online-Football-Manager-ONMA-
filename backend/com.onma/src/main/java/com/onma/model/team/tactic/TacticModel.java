@@ -28,7 +28,11 @@ public class TacticModel extends AbstractModel {
     @Enumerated(EnumType.STRING)
     private FormationEnum formation;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private ApproachModel approach;
+
+    @Column(nullable = false)
+    private Boolean active;
 
 }

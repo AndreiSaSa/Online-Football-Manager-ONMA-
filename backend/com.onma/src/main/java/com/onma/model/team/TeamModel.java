@@ -26,7 +26,8 @@ public class TeamModel extends AbstractModel {
     @NotNull
     private UserModel user;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @NotNull
     private TeamInformationModel teamInformation;
 

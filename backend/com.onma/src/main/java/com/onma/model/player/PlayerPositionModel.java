@@ -19,7 +19,6 @@ import javax.validation.constraints.NotBlank;
 public class PlayerPositionModel extends AbstractModel {
 
     @Column(nullable = false)
-    @NotBlank
     @Enumerated(EnumType.STRING)
     private PlayerPositionEnum position;
 }

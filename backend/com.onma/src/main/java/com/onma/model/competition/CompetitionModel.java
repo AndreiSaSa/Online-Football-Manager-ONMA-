@@ -30,7 +30,8 @@ public class CompetitionModel extends AbstractModel {
     )
     private List<MatchModel> matches;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private CompetitionRulesModel competitionRules;
 
 }

@@ -36,8 +36,8 @@ public class UserModel extends AbstractModel implements UserDetails {
     @Email
     private String email;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @NotNull
+    @OneToOne(fetch = FetchType.LAZY,
+             cascade = CascadeType.ALL)
     private ProfileModel profile;
 
     @OneToMany(

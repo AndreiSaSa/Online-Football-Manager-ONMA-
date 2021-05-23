@@ -15,11 +15,13 @@ public class CompetitionDTO extends AbstractDTO {
     
     private String name;
     private CompetitionRulesDTO competitionRules;
+    private Long matchDay;
 
     public static CompetitionDTO convert(final CompetitionModel competitionModel) {
         return CompetitionDTO.builder().
                 id(competitionModel.getId()).
                 name(competitionModel.getName()).
+                matchDay(competitionModel.getMatchDay()).
                 competitionRules(CompetitionRulesDTO.convert(competitionModel.getCompetitionRules())).
                 build();
     }

@@ -5,4 +5,5 @@ import com.onma.facade.base.AbstractFacade;
 import com.onma.form.team.TeamForm;
 
 public interface TeamFacade extends AbstractFacade<TeamDTO, TeamForm> {
+    void selectTeam(final Long teamId);
 }

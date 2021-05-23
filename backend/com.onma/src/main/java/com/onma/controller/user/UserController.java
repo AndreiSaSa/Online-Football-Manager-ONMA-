@@ -25,7 +25,7 @@ public class UserController extends AbstractController<UserDTO, UserForm> {
     }
 
     @PostMapping("register")
-    void createUser(@RequestBody @Valid final UserForm userForm) {
+    public void createUser(@RequestBody @Valid final UserForm userForm) {
         userFacade.register(userForm);
     }
 

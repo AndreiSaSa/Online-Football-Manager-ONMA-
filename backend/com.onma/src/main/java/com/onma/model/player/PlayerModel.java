@@ -41,17 +41,6 @@ public class PlayerModel extends AbstractModel {
     @Column(nullable = false)
     private Boolean transferListed;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "player_preferred_position",
-            joinColumns = @JoinColumn(name = "player_id"),
-            inverseJoinColumns = @JoinColumn(name = "preferred_position_id")
-    )
-    @NotNull
-    private List<PlayerPositionModel> preferredPositions;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @NotNull
     private TeamModel team;

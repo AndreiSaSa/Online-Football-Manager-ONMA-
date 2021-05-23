@@ -53,6 +53,7 @@ public class UserFacadeImpl extends AbstractFacadeImpl<UserModel, UserDTO, UserF
     public void register(final UserForm userForm) {
         final UserModel userModel = UserForm.convert(userForm);
         userModel.setRole(roleService.getById(3L));
+        userModel.getProfile().setPoints(0L);
         userService.saveOrUpdate(userModel);
     }
 }

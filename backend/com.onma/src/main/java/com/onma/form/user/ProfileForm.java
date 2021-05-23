@@ -34,7 +34,6 @@ public class ProfileForm extends AbstractForm {
     @NotNull
     private LocalDateTime birthDate;
 
-    @NotNull
     private Long points;
 
     public static ProfileModel convert(final ProfileForm profileForm) {

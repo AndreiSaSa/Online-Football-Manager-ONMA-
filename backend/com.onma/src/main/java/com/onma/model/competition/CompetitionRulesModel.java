@@ -23,7 +23,4 @@ public class CompetitionRulesModel extends AbstractModel {
 
     @Column(nullable = false)
     private Long numberOfTeams;
-
-    @Column(nullable = false)
-    private Long numberOfGames;
 }

@@ -13,7 +13,7 @@ public abstract class AbstractController<DTO, FORM> {
     private AbstractFacade<DTO, FORM> abstractFacade;
 
     @PostMapping
-    void saveOrUpdate(@RequestBody @Valid final FORM form) {
+    public void saveOrUpdate(@RequestBody @Valid final FORM form) {
         abstractFacade.saveOrUpdate(form);
     }
 

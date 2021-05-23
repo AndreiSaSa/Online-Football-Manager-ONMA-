@@ -23,7 +23,6 @@ public class PlayerDTO extends AbstractDTO {
     private Long wage;
     private PlayerAttributesDTO playerAttributes;
     private Boolean transferListed;
-    private List<PlayerPositionDTO> preferredPositions;
     private TeamDTO team;
     private Long tacticPosition;
 
@@ -36,7 +35,6 @@ public class PlayerDTO extends AbstractDTO {
                 wage(playerModel.getWage()).
                 playerAttributes(PlayerAttributesDTO.convert(playerModel.getPlayerAttributes())).
                 transferListed(playerModel.getTransferListed()).
-                preferredPositions(playerModel.getPreferredPositions().stream().map(PlayerPositionDTO::convert).collect(Collectors.toList())).
                 team(TeamDTO.convert(playerModel.getTeam())).
                 tacticPosition(playerModel.getTacticPosition()).
                 build();

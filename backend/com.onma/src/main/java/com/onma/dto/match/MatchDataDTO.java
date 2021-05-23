@@ -17,6 +17,9 @@ public class MatchDataDTO extends AbstractDTO {
     private Long awayScore;
 
     public static MatchDataDTO convert(final MatchDataModel matchDataModel) {
+        if(matchDataModel == null) {
+            return null;
+        }
         return MatchDataDTO.builder().
                 id(matchDataModel.getId()).
                 homeScore(matchDataModel.getHomeScore()).

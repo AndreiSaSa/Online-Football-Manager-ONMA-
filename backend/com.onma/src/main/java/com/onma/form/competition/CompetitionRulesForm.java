@@ -4,27 +4,28 @@ import com.onma.form.base.AbstractForm;
 import com.onma.model.competition.CompetitionRulesModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Getter
 @Setter
 @SuperBuilder
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class CompetitionRulesForm extends AbstractForm {
 
+    @Min(0)
+    @Max(20)
     private Long numberOfTeams;
-
-    private Long numberOfGames;
 
     public static CompetitionRulesModel convert(final CompetitionRulesForm competitionRulesForm) {
         return CompetitionRulesModel.builder().
                 id(competitionRulesForm.getId()).
                 numberOfTeams(competitionRulesForm.numberOfTeams).
-                numberOfGames(competitionRulesForm.numberOfGames).
                 build();
     }
 

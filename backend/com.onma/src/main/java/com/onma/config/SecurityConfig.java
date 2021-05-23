@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
-                .antMatchers("/**").permitAll()
+                //.antMatchers("/**").permitAll()
 
                 .antMatchers("/*/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/register").permitAll()
@@ -53,26 +53,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/user/{id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/user/{id}").hasRole("ADMIN")
 
-                // crud on entities for masters and admins
+                // crud on entities for masters and admins + read for users
 
                 .antMatchers(HttpMethod.POST, "/competition").hasAnyRole("ADMIN", "MASTER")
-                .antMatchers(HttpMethod.GET, "/competition").hasAnyRole("ADMIN", "MASTER")
-                .antMatchers(HttpMethod.GET, "/competition/{id}").hasAnyRole("ADMIN", "MASTER")
+                .antMatchers(HttpMethod.GET, "/competition").hasAnyRole("ADMIN", "MASTER", "USER")
+                .antMatchers(HttpMethod.GET, "/competition/{id}").hasAnyRole("ADMIN", "MASTER", "USER")
                 .antMatchers(HttpMethod.DELETE, "/competition/{id}").hasAnyRole("ADMIN", "MASTER")
 
                 .antMatchers(HttpMethod.POST, "/match").hasAnyRole("ADMIN", "MASTER")
-                .antMatchers(HttpMethod.GET, "/match").hasAnyRole("ADMIN", "MASTER")
-                .antMatchers(HttpMethod.GET, "/match/{id}").hasAnyRole("ADMIN", "MASTER")
+                .antMatchers(HttpMethod.GET, "/match").hasAnyRole("ADMIN", "MASTER", "USER")
+                .antMatchers(HttpMethod.GET, "/match/{id}").hasAnyRole("ADMIN", "MASTER", "USER")
                 .antMatchers(HttpMethod.DELETE, "/match/{id}").hasAnyRole("ADMIN", "MASTER")
 
                 .antMatchers(HttpMethod.POST, "/player").hasAnyRole("ADMIN", "MASTER")
-                .antMatchers(HttpMethod.GET, "/player").hasAnyRole("ADMIN", "MASTER")
-                .antMatchers(HttpMethod.GET, "/player/{id}").hasAnyRole("ADMIN", "MASTER")
+                .antMatchers(HttpMethod.GET, "/player").hasAnyRole("ADMIN", "MASTER", "USER")
+                .antMatchers(HttpMethod.GET, "/player/{id}").hasAnyRole("ADMIN", "MASTER", "USER")
                 .antMatchers(HttpMethod.DELETE, "/player/{id}").hasAnyRole("ADMIN", "MASTER")
 
                 .antMatchers(HttpMethod.POST, "/team").hasAnyRole("ADMIN", "MASTER")
-                .antMatchers(HttpMethod.GET, "/team").hasAnyRole("ADMIN", "MASTER")
-                .antMatchers(HttpMethod.GET, "/team/{id}").hasAnyRole("ADMIN", "MASTER")
+                .antMatchers(HttpMethod.GET, "/team").hasAnyRole("ADMIN", "MASTER", "USER")
+                .antMatchers(HttpMethod.GET, "/team/{id}").hasAnyRole("ADMIN", "MASTER", "USER")
                 .antMatchers(HttpMethod.DELETE, "/team/{id}").hasAnyRole("ADMIN", "MASTER")
 
                 // crud on tactics for users
@@ -87,15 +87,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/team/{id}/select").hasRole("USER")
 
                 .antMatchers(HttpMethod.POST, "/player/{id}/buy").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/player/{id}/pitch-position").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/player/{id}/transfer-list").hasRole("USER")
-                .antMatchers(HttpMethod.GET, "/player/market").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/player/market").hasAnyRole("ADMIN", "MASTER", "USER")
 
                 .antMatchers(HttpMethod.POST, "/competition/{id}/advance-match-day").hasAnyRole("ADMIN", "MASTER")
                 .antMatchers(HttpMethod.POST, "/competition/generate-random").hasAnyRole("ADMIN", "MASTER")
                 .antMatchers(HttpMethod.POST, "/competition/generate-equal").hasAnyRole("ADMIN", "MASTER")
-
-
 
                 .anyRequest().authenticated()
                 .and()

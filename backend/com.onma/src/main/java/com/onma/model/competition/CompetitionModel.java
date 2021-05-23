@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -30,8 +31,11 @@ public class CompetitionModel extends AbstractModel {
     )
     private List<MatchModel> matches;
 
-    @OneToOne(fetch = FetchType.LAZY,
+    @OneToOne(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
     private CompetitionRulesModel competitionRules;
+
+    @NotNull
+    private Long matchDay;
 
 }

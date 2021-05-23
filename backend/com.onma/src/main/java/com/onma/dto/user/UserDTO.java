@@ -19,6 +19,9 @@ public class UserDTO extends AbstractDTO {
     private ProfileDTO profile;
 
     public static UserDTO convert(final UserModel userModel) {
+        if(userModel == null) {
+            return null;
+        }
         return UserDTO.builder().
                 id(userModel.getId()).
                 username(userModel.getUsername()).

@@ -33,7 +33,6 @@ public class UserForm extends AbstractForm {
     @Valid
     private ProfileForm profile;
 
-    @NotNull
     private Long roleId;
 
     public static UserModel convert(final UserForm userForm) {

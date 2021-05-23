@@ -1,17 +1,12 @@
 package com.onma.form.player;
 
 import com.onma.form.base.AbstractForm;
-import com.onma.form.team.TeamForm;
-import com.onma.model.player.PlayerAttributesModel;
 import com.onma.model.player.PlayerModel;
-import com.onma.model.player.PlayerPositionModel;
-import com.onma.model.team.TeamModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -44,10 +39,6 @@ public class PlayerForm extends AbstractForm {
     private Boolean transferListed;
 
     @NotNull
-    @Valid
-    private List<PlayerPositionForm> preferredPositions;
-
-    @NotNull
     private Long teamId;
 
     @NotNull
@@ -62,7 +53,6 @@ public class PlayerForm extends AbstractForm {
                 wage(playerForm.wage).
                 playerAttributes(PlayerAttributesForm.convert(playerForm.playerAttributes)).
                 transferListed(playerForm.transferListed).
-                preferredPositions(playerForm.preferredPositions.stream().map(PlayerPositionForm::convert).collect(Collectors.toList())).
                 tacticPosition(playerForm.tacticPosition).
                 build();
     }

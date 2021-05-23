@@ -16,12 +16,10 @@ import java.time.LocalDateTime;
 public class CompetitionRulesDTO extends AbstractDTO {
 
     private Long numberOfTeams;
-    private Long numberOfGames;
 
     public static CompetitionRulesDTO convert(final CompetitionRulesModel competitionRulesModel) {
         return CompetitionRulesDTO.builder().
                 id(competitionRulesModel.getId()).
-                numberOfGames(competitionRulesModel.getNumberOfGames()).
                 numberOfTeams(competitionRulesModel.getNumberOfTeams()).
                 build();
     }
